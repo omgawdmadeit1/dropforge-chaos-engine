@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* DropForge Neon Chaos Palette */
+  --neon-pink: #ff2e94;
+  --neon-cyan: #00f3ff;
+  --neon-purple: #a855f7;
+  --neon-yellow: #facc15;
+  --bg-void: #050505;
+  --bg-card: #0a0a0f;
+  --border-glow: #ff2e94;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+  background: var(--bg-void);
+  color: #ededed;
+}
+
+/* CHAOS LORDS STYLES */
+.chaos-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+  background: linear-gradient(135deg, #ff2e94 0%, #a855f7 50%, #00f3ff 100%);
+  box-shadow: 
+    0 0 20px #ff2e94,
+    0 0 60px #a855f7,
+    0 10px 30px rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.9);
+}
+
+.chaos-button:hover {
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 
+    0 0 40px #ff2e94,
+    0 0 120px #00f3ff,
+    0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 46, 148, 0.15);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 0 1px var(--neon-pink);
+}
+
+.doge-btn {
+  background: linear-gradient(90deg, #c084fc 0%, #facc15 100%);
+  color: #111;
+  font-weight: 800;
+  transition: all .1s ease;
+}
+
+.doge-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 30px #facc15;
+}
+
+.confetti {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  animation: confetti-fall 1.8s linear forwards;
+}
+
+@keyframes confetti-fall {
+  to { transform: translateY(120vh) rotate(720deg); opacity: 0; }
+}
+
+.quest-bar {
+  height: 6px;
+  background: linear-gradient(to right, #00f3ff, #ff2e94);
+  transition: width 600ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.fortune {
+  font-family: var(--font-geist-mono);
+  letter-spacing: 0.08em;
+}
