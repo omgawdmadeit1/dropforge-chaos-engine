@@ -22,7 +22,6 @@ export default function DropForgeLanding() {
             </Link>
           </div>
         </div>
-      </nav>
 
       <div className="pt-24 pb-16 px-6 max-w-5xl mx-auto text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-white/20 text-xs tracking-[3px] mb-6">
@@ -38,7 +37,10 @@ export default function DropForgeLanding() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/chaos-drop" className="chaos-button inline-flex items-center justify-center gap-3 text-2xl font-black px-14 py-7 rounded-3xl text-black">
+          <Link 
+            href="/chaos-drop" 
+            className="chaos-button inline-flex items-center justify-center gap-3 text-2xl font-black px-14 py-7 rounded-3xl text-black"
+          >
             <Zap className="w-7 h-7" /> CHAOS DROP — PRINT MY EMPIRE
           </Link>
           <a href="#demo" className="inline-flex items-center justify-center gap-2 text-lg border border-white/30 hover:bg-white/5 px-10 rounded-3xl font-semibold transition">SEE IT LIVE</a>

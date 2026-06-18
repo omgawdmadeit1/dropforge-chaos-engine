@@ -24,7 +24,6 @@ export default function ChaosDropPage() {
     setDogeResult(null);
 
     try {
-      // 1. Simulate swarm + forge (wealth-protocol + empire blueprints)
       await new Promise(r => setTimeout(r, 650));
 
       const products = [
@@ -35,10 +34,8 @@ export default function ChaosDropPage() {
 
       const deployedUrl = `https://dropforge-${Date.now().toString(36)}.vercel.app`;
 
-      // 2. THE DOGEPAY MAGIC — real call
       const doge = await generateDogePay(69, idea.slice(0, 42), `SKU-${Date.now().toString(36)}`, 'demo-user-420');
 
-      // 3. Fake HyperFrames + Linear/Notion side effects (real MCP later)
       const videoUrl = `https://hyperframes.ai/preview/${Date.now()}`;
 
       const dropResult = {
@@ -52,10 +49,8 @@ export default function ChaosDropPage() {
       setResult(dropResult);
       setDogeResult(doge);
 
-      // Epic feedback
       toast.success("CHAOS DROP COMPLETE", { description: "Empire spawned. Doge link + NFT voucher ready." });
       
-      // Fake confetti + quest unlock
       triggerMemeConfetti();
 
     } catch (e) {
@@ -91,7 +86,6 @@ export default function ChaosDropPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white">
       <div className="max-w-3xl mx-auto px-6 pt-12 pb-24">
-        {/* HEADER */}
         <div className="flex items-center justify-between mb-10">
           <div>
             <Link href="/" className="text-xs tracking-[3px] text-white/40">← BACK TO EMPIRE</Link>
@@ -103,7 +97,6 @@ export default function ChaosDropPage() {
           </div>
         </div>
 
-        {/* THE INPUT */}
         <div className="mb-8">
           <div className="text-xs uppercase tracking-[3px] text-white/40 mb-2">WHAT ARE WE DROPPING TODAY?</div>
           <input
@@ -114,7 +107,6 @@ export default function ChaosDropPage() {
           />
         </div>
 
-        {/* THE BUTTON — NUCLEAR */}
         <button
           onClick={handleChaosDrop}
           disabled={isDropping}
@@ -129,7 +121,6 @@ export default function ChaosDropPage() {
 
         <div className="text-center text-[10px] mt-2.5 tracking-widest text-white/40">DUAL RAIL • STRIPE OR 69 DOGE • INSTANT NFT VOUCHER</div>
 
-        {/* RESULTS — THE MONEY PRINTER */}
         <AnimatePresence>
           {result && (
             <motion.div 
@@ -137,7 +128,6 @@ export default function ChaosDropPage() {
               animate={{ opacity: 1, y: 0 }}
               className="mt-10 space-y-6"
             >
-              {/* Deployed Empire */}
               <div className="card p-8 rounded-3xl">
                 <div className="uppercase text-[#00f3ff] text-xs tracking-[3px]">EMPIRE DEPLOYED</div>
                 <div className="text-4xl font-black mt-2 mb-4">{result.idea}</div>
@@ -157,7 +147,6 @@ export default function ChaosDropPage() {
                 </a>
               </div>
 
-              {/* THE DOGEPAY BLOCK — FULLY IMPLEMENTED */}
               {dogeResult && (
                 <div className="card p-8 rounded-3xl border-[#facc15] border-2">
                   <div className="flex items-center gap-3 mb-4">
@@ -201,7 +190,6 @@ export default function ChaosDropPage() {
                 </div>
               )}
 
-              {/* Gamified dashboard mini */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="card p-6 rounded-3xl">
                   <div className="text-xs text-white/50">PROJECTED THIS DROP</div>
