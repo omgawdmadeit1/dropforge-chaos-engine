@@ -1,0 +1,67 @@
+// DropForge Chaos Engine v1.1 - Prisma Schema
+// Users, Chaos Drops, Dual-rail payments (DOGE + Stripe), NFT vouchers, Gamified Quests
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String?  @unique
+  name      String?
+  xHandle   String?
+  createdAt DateTime @default(now())
+  drops     Drop[]
+  payments  Payment[]
+  quests    Quest[]
+}
+
+model Drop {
+  id            String   @id @default(cuid())
+  userId        String
+  idea          String
+  products      Json     // Array of generated packs / NFTs / agents
+  deployedUrl   String?
+  revenue       Float    @default(0)
+  videoUrl      String?
+  createdAt     DateTime @default(now())
+  user          User     @relation(fields: [userId], references: [id])
+  payments      Payment[]
+  quests        Quest[]
+}
+
+model Payment {
+  id           String   @id @default(cuid())
+  userId       String
+  dropId       String?
+  type         String   // "DOGE" | "STRIPE"
+  amount       Float
+  currency     String   @default("USD")
+  memo         String
+  sku          String?
+  nftVoucher   String?
+  dogeLink     String?
+  stripeSessionId String?
+  status       String   @default("pending") // pending | paid | failed
+  txHash       String?
+  createdAt    DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+  drop         Drop?    @relation(fields: [dropId], references: [id])
+}
+
+model Quest {
+  id        String   @id @default(cuid())
+  userId    String
+  dropId    String?
+  title     String
+  description String?
+  reward    String?  // e.g. "Cyberbeast NFT" or "+420 XP"
+  completed Boolean  @default(false)
+  completedAt DateTime?
+  user      User     @relation(fields: [userId], references: [id])
+  drop      Drop?    @relation(fields: [dropId], references: [id])
+}
